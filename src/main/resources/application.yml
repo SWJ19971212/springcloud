@@ -1,0 +1,21 @@
+server:
+  port: 6001
+
+eureka:
+  instance:
+    hostname: eureka1.com
+  server:
+    enable-self-preservation: false   		#禁用保护,默认true
+    eviction-interval-timer-in-ms: 10000  	#清理间隔（默认是60*1000）
+  client:
+    service-url:
+      #defaultZone: http://localhost:6001/eureka/	#单机版
+      defaultZone: http://admin:123@eureka2.com:6002/eureka/  #集群互相指向
+    register-with-eureka: true 				        #单机false,默认true
+    fetch-registry: true				            #单机false,默认true
+
+spring:
+  security:
+    user:
+      name: admin
+      password: 123
